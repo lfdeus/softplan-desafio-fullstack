@@ -25,20 +25,17 @@ export class MenuComponent implements OnInit {
         nome: 'Processos',
         rota: 'processos',
         icon: 'fa fa-file',
-        // visible: this.sessao.loggedUser.perfil === Perfil.TRIADOR
-        visible: true
+        visible: this.sessao.loggedUser.perfil === Perfil.TRIADOR
       }, {
         nome: 'Parecer Pendente',
         rota: 'pendente',
         icon: 'fa fa-check',
-        // visible: this.sessao.loggedUser.perfil === Perfil.FINALIZADOR
-        visible: true
+        visible: this.sessao.loggedUser.perfil === Perfil.FINALIZADOR
       }, {
         nome: 'Usuários',
         rota: 'usuarios',
         icon: 'fa fa-user',
-        // visible: this.sessao.loggedUser.perfil === Perfil.ADMINISTRADOR
-        visible: true
+        visible: this.sessao.loggedUser.perfil === Perfil.ADMINISTRADOR
       }
     ];
   }
