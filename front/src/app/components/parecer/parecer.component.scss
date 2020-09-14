@@ -1,0 +1,99 @@
+@import "../../../assets/import.scss";
+
+.divSuperior {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  align-items: center;
+}
+
+.divParecer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.divTitulo {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  font-size: 30px;
+  color: $baseHover;
+}
+
+.divBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 70px;
+  font-size: 30px;
+}
+
+.divConteudo {
+  padding-top: 30px;
+}
+
+.divTable {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  font-size: 20px;
+  color: $branco;
+}
+
+.divItemTable {
+  padding: 10px 10px 10px 0;
+  height: 35px;
+  font-size: 20px;
+  color: $branco;
+}
+
+.divDados {
+  padding-top: 20px;
+}
+
+.divInput {
+  display: grid;
+  padding: 20px 0 20px 0;
+  width: 100%;
+}
+
+.spanInput {
+  color: $textoSec;
+}
+
+.divFlex {
+  display: flex;
+  align-items: center;
+}
+
+.marginRight50 {
+  margin-right: 50px;
+}
+
+.divEmail {
+  color: $textoSec;
+  display: flex;
+  padding: 5px 0 5px 0;
+}
+
+.divBtnInferiores {
+  padding-top: 50px;
+}
+
+.inputFontSize18 {
+  font-size: 18px;
+}
+
+.btn-add {
+  color: $textoSec;
+  cursor: pointer;
+  transition: .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.btn-add:hover {
+  color: $textoSecHover;
+}
+
+.divEditorHtml {
+  background: white;
+}

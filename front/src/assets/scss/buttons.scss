@@ -1,0 +1,33 @@
+@import 'src/assets/scss/cores';
+
+.btn-primario {
+  padding: 5px 15px;
+  font-size: 16px;
+  background: $base;
+  border: 2px solid $base;
+  border-radius: 4px;
+  color: $branco;
+  cursor: pointer;
+  box-shadow: 0 2px 3px 1px #dadbe1;
+  transition: .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.btn-primario:hover {
+  background: $baseHover;
+}
+
+.btn-segundario {
+  padding: 5px 15px;
+  font-size: 16px;
+  background: $branco;
+  border: 2px solid $textoSec;
+  border-radius: 4px;
+  color: $textoSec;
+  cursor: pointer;
+  box-shadow: 0 2px 3px 1px #dadbe1;
+  transition: .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.btn-segundario:hover {
+  background: $brancoHover;
+}

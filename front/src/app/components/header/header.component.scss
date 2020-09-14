@@ -1,0 +1,62 @@
+@import "../../../assets/import.scss";
+
+.header {
+  border-bottom: 1px solid #DCDDDF;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  //display: flex;
+  height: 95px;
+  position: relative;
+}
+
+.header-left {
+  background-color: $base;
+  color: $branco;
+  border-bottom: 1px solid $baseHover;
+  font-weight: 300;
+  height: 95px;
+  width: 200px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+}
+
+.header-right {
+  height: 95px;
+  width: calc(100vw - 80px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.divUsuario {
+  display: grid;
+  text-align: end;
+  padding-right: 10px;
+}
+
+.nomeUsuario {
+  display: grid;
+  font-size: 18px;
+  font-weight: 400;
+  color: $base;
+}
+
+.divSair {
+  text-align: end;
+}
+
+.btnSair {
+  cursor: pointer;
+  text-align: end;
+  font-size: 30px;
+  color: $base;
+  transition: .6s cubic-bezier(.165,.84,.44,1);
+}
+
+.btnSair:hover {
+  color: $baseHover;
+}

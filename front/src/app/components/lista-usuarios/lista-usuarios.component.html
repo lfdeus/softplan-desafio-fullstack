@@ -1,0 +1,51 @@
+<div class="divSuperior">
+  <div class="divSuperiorPesquisa">
+    <div class="divTitulo text-30">
+      <span>Usuários</span>
+    </div>
+  </div>
+  <div class="divBtn">
+    <button class="btn-primario"
+            [routerLink]="['/usuario/0']">Novo</button>
+  </div>
+</div>
+<div class="divConteudo">
+  <table id="customers"
+         class="tableCli">
+    <tr class="tableCliHeader">
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Username</th>
+      <th>Perfil</th>
+      <th>Situação</th>
+    </tr>
+    <tr class="divTable"
+        *ngFor="let obj of lista" [routerLink]="['/usuario', obj?.id]">
+      <td>
+        <div class="divItemTable">
+          {{obj.id}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{obj.nome}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{obj.username}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{perfilApresentar(obj.perfil)}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{obj.ativo ? 'Ativo' : 'Inativo'}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

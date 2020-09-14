@@ -1,0 +1,51 @@
+<div class="divSuperior">
+  <div class="divSuperiorPesquisa">
+    <div class="divTitulo text-30">
+      <span>Processos</span>
+    </div>
+  </div>
+  <div class="divBtn">
+    <button class="btn-primario"
+            [routerLink]="['/processo/0']">Novo</button>
+  </div>
+</div>
+<div class="divConteudo">
+  <table id="customers"
+         class="tableCli">
+    <tr class="tableCliHeader">
+      <th>ID</th>
+      <th>Descrição</th>
+      <th>Usuário</th>
+      <th>Data Processo</th>
+      <th>Data Parecer</th>
+    </tr>
+    <tr class="divTable"
+        *ngFor="let obj of lista" [routerLink]="['/processo', obj?.id]">
+      <td>
+        <div class="divItemTable">
+          {{obj.id}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{obj.descricao}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable">
+          {{obj.usuarioProcesso.nome}}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable text-left">
+          {{ formatarData(obj.dataProcesso) | date: 'dd/MM/yyyy HH:mm:ss' }}
+        </div>
+      </td>
+      <td>
+        <div class="divItemTable text-left">
+          <span *ngIf="obj.dataParecer">{{ formatarData(obj.dataParecer) | date: 'dd/MM/yyyy HH:mm:ss' }}</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

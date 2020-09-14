@@ -1,0 +1,113 @@
+@import "../../../assets/import.scss";
+
+.divGeral {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+}
+
+.divLogin {
+  padding: 30px;
+  width: 500px;
+  height: 430px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.divInput {
+  display: grid;
+}
+
+.divLogo {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: 25px;
+  font-weight: 400;
+  color: $baseHover;
+}
+
+.divLogoInferior {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: 10px;
+  font-weight: 400;
+  color: $baseHover;
+}
+
+.btn-login {
+  width: 100%;
+  line-height: 25px;
+  padding: 10px;
+  background: $base;
+  border: 2px solid $base;
+  border-radius: 4px;
+  color: #ffff;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-login:hover {
+  background: $baseHover;
+}
+
+.btn-disable {
+  background: #8888;
+  border: 2px solid #8888;
+  cursor: not-allowed;
+  width: 100%;
+  line-height: 25px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #9999;
+  text-transform: uppercase;
+}
+
+.divEsqueceu {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.btn-esqueceu {
+  font-size: 12px;
+  color: #1998FC;
+  cursor: pointer;
+}
+
+.divEmail {
+  padding-top: 50px;
+}
+
+.divSenha {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #BCBFC7;
+  padding: 0px 30px 0px 10px;
+  line-height: 40px;
+  color: #92959B;
+
+  outline: 0px !important;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(#1998FC, .5);
+  }
+
+  &.error {
+    border-color: #DB2C3D;
+  }
+
+  &:disabled {
+    border-color: #EFF2F7 !important;
+    background-color: #EFF2F7 !important;
+  }
+}

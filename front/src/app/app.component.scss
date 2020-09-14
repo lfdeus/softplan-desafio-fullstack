@@ -1,0 +1,25 @@
+@import "../assets/import.scss";
+
+.app {
+  background: $base;
+}
+
+.div {
+  display: flex;
+}
+
+.conteudo {
+  background: $fundo;
+  width: 100%;
+  height: calc(100vh - 95px);
+  padding: 30px 80px 50px;
+  overflow-y: auto;
+}
+
+.conteudo-login {
+  background: $base;
+  width: 100%;
+  height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+}

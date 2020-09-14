@@ -1,0 +1,11 @@
+<div class="menu-lat">
+  <div class="menu">
+    <div *ngFor="let menu of menus">
+      <div [routerLinkActive]="'menu-selecionado'" class="menu-name text-14" *ngIf="menu.visible"
+        [routerLink]="[ menu.rota ]" queryParamsHandling="merge">
+        <i class="{{menu.icon}}"></i>
+        <span class="nome">{{menu.nome}}</span>
+      </div>
+    </div>
+  </div>
+</div>

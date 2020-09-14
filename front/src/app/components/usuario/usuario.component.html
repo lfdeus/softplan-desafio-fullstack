@@ -1,0 +1,70 @@
+<div class="divSuperior">
+  <div class="divTitulo text-30">
+    <span *ngIf="!novo()">Editar usuário</span>
+    <span *ngIf="novo()">Cadastrar usuário</span>
+  </div>
+</div>
+<div class="divDados">
+  <div class="divFlex">
+    <div class="divInput marginRight50">
+      <mat-form-field class="inputFontSize18">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome"
+               autocomplete="new-password"
+               maxlength="150"
+               [formControl]="formGroup.get('nome')">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="divFlex">
+    <div class="divInput marginRight50">
+      <mat-form-field class="inputFontSize18">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username"
+               autocomplete="new-password"
+               maxlength="150"
+               [formControl]="formGroup.get('username')">
+      </mat-form-field>
+    </div>
+
+    <div class="divInput marginRight50">
+      <mat-form-field class="inputFontSize18">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password"
+               autocomplete="new-password"
+               maxlength="150"
+               [formControl]="formGroup.get('password')">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="divFlex">
+    <div class="divInput marginRight50">
+      <mat-form-field>
+        <mat-label>Perfil</mat-label>
+        <mat-select [formControl]="formGroup.get('perfil')">
+          <mat-option value="ADMINISTRADOR">Administrador</mat-option>
+          <mat-option value="TRIADOR">Usuário Triador</mat-option>
+          <mat-option value="FINALIZADOR">Usuário Finalizador</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="divInput marginRight50">
+      <mat-form-field>
+        <mat-label>Situação</mat-label>
+        <mat-select [formControl]="formGroup.get('ativo')">
+          <mat-option [value]="true">Ativo</mat-option>
+          <mat-option [value]="false">Inativo</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="divBtnInferiores">
+  <button class="btn-segundario"
+          [routerLink]="['/usuarios']">Cancelar
+  </button>
+  <button class="btn-primario marginLeft10"
+          (click)="salvar()">Salvar
+  </button>
+</div>

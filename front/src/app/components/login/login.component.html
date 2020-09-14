@@ -1,0 +1,29 @@
+<div class="divGeral">
+  <div class="divLogin">
+    <div class="divLogo">
+      Gestão de Processos
+    </div>
+    <div class="divLogo">
+      Fullstack Softplan
+    </div>
+    <div class="divInput divEmail">
+      <input [formControl]="formGroup.get('user')"
+             type="text"
+             placeholder="Username">
+    </div>
+    <div class="divInput divSenha">
+      <input [formControl]="formGroup.get('pass')"
+             type="password"
+             placeholder="Password">
+    </div>
+    <div>
+      <button [ngClass]="{'btn-disable' : !formValid(), 'btn-login' : formValid()}"
+              [disabled]="!formValid()"
+              (click)="login()">Acessar
+      </button>
+    </div>
+    <div class="divLogoInferior">
+      by Luiz Felipe
+    </div>
+  </div>
+</div>

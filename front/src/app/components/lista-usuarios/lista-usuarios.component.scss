@@ -1,0 +1,120 @@
+@import "../../../assets/import.scss";
+
+.divSuperior {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  align-items: center;
+}
+
+.divSuperiorPesquisa {
+  display: flex;
+  align-items: center;
+}
+
+.divPesquisa {
+  margin-left: 40px;
+}
+
+.divTitulo {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  font-size: 30px;
+  color: $baseHover;
+}
+
+.divBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 70px;
+  font-size: 30px;
+}
+
+.divConteudo {
+  padding-top: 30px;
+}
+
+.tableCli {
+  width: 100%;
+  border-bottom: 0.1px solid #BCBFC7;
+}
+
+.tableCliHeader {
+  font-size: 14px;
+  font-weight: 400;
+  color: $textoSecHover;
+  border-bottom: 0.1px solid #BCBFC7;
+}
+
+.divTable {
+  align-items: center;
+  height: 35px;
+  font-size: 16px;
+  color: $textoSec;
+  cursor: pointer;
+  padding: 0 10px 0 10px;
+}
+
+.divTable:hover {
+  background: $cinzaSec;
+}
+
+.divItemTable {
+  display: flex;
+  align-items: center;
+  color: $textoSec;
+}
+
+.divItemTableVenda {
+  display: flex;
+  justify-content: center;
+}
+
+.inputIcon {
+  font-size: 16px;
+  color: $textoSec;
+  position: relative;
+  top: 0;
+  left: -190px;
+}
+
+.inputBusca {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #BCBFC7;
+  padding: 0px 30px 0px 30px;
+  line-height: 40px;
+  color: #92959B;
+
+  outline: 0px !important;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(#1998FC, .5);
+  }
+
+  &.error {
+    border-color: #DB2C3D;
+  }
+
+  &:disabled {
+    border-color: #EFF2F7 !important;
+    background-color: #EFF2F7 !important;
+  }
+}
+
+.btn-venda {
+  padding: 10px;
+  border: none;
+  color: $base;
+  background: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 100%;
+  transition: .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.btn-venda:hover {
+  background: $base;
+  color: $branco;
+}

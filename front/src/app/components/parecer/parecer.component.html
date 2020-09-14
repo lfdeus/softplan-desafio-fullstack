@@ -1,0 +1,48 @@
+<div class="divParecer">
+  <div>
+    <div class="divSuperior">
+      <div class="divTitulo">
+        <span>Processo</span>
+      </div>
+    </div>
+    <div class="divDados">
+      <div class="divFlex">
+        <div class="divInput">
+          <div class="divHtmlProcesso"
+               [innerHTML]="processo?.processo | safeHtml">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="divSuperior">
+      <div class="divTitulo text-30">
+        <span *ngIf="!parecerRealizado()">Incluir Parecer</span>
+        <span *ngIf="parecerRealizado()">Parecer</span>
+      </div>
+    </div>
+    <div class="divDados">
+      <div class="divFlex">
+        <div class="divInput">
+          <angular-editor
+            *ngIf="!parecerRealizado()"
+            class="divEditorHtml" [(ngModel)]="htmlParecer" [config]="config"></angular-editor>
+          <div class="divHtmlProcesso"
+               *ngIf="parecerRealizado()"
+               [innerHTML]="processo?.parecer | safeHtml">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divBtnInferiores">
+  <button class="btn-segundario"
+          [routerLink]="['/pendente']">Voltar
+  </button>
+  <button class="btn-primario marginLeft10"
+          *ngIf="!parecerRealizado()"
+          (click)="salvar()">Salvar
+  </button>
+</div>

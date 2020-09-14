@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '~ng-snotify/styles/material';
+@import './assets/icons/font-awesome/css/font-awesome.min.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//FONT-SIZE
+.text-12 {
+  font-size: 12px;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+
+.text-16 {
+  font-size: 16px;
+}
+
+.text-20 {
+  font-size: 20px;
+}
+
+.text-22 {
+  font-size: 22px;
+}
+
+.text-24 {
+  font-size: 24px;
+}
+
+.text-26 {
+  font-size: 26px;
+}
+
+.text-28 {
+  font-size: 28px;
+}
+
+.text-30 {
+  font-size: 30px;
+}
+
+
+//WIDTH
+.width-50-perc {
+  width: 50%;
+}
+
+.width-100-perc {
+  width: 100%;
+}
+
+.width-200-px {
+  width: 200px;
+}
+
+.width-300-px {
+  width: 300px;
+}
+
+.width-400-px {
+  width: 400px;
+}
+
+//PADDING
+.paddingLeft5 {
+  padding-left: 5px;
+}
+
+.paddingLeft10 {
+  padding-left: 10px;
+}
+
+.paddingRight5 {
+  padding-right: 5px;
+}
+
+//MARGIN
+.marginLeft5 {
+  margin-left: 5px;
+}
+
+.marginLeft10 {
+  margin-left: 10px;
+}
+
+.marginRight5 {
+  margin-right: 5px;
+}
+
+.marginRight10 {
+  margin-right: 10px;
+}
+
+.marginRight50 {
+  margin-right: 50px;
+}
+
+//outros
+.cursorPointer {
+  cursor: pointer;
+}
+
+.text-bold-400 {
+  font-weight: 400;
+}
+
+.text-bold-500 {
+  font-weight: 500;
+}
