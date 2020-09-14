@@ -16,10 +16,13 @@
   overflow-y: auto;
 }
 
+.home {
+  overflow-y: auto;
+  width: 100%;
+}
+
 .conteudo-login {
   background: $base;
   width: 100%;
   height: 100vh;
-  padding-left: 5%;
-  padding-right: 5%;
 }

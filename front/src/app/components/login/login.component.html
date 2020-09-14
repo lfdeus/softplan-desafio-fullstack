@@ -9,11 +9,13 @@
     <div class="divInput divEmail">
       <input [formControl]="formGroup.get('user')"
              type="text"
+             (keyup.enter)="login()"
              placeholder="Username">
     </div>
     <div class="divInput divSenha">
       <input [formControl]="formGroup.get('pass')"
              type="password"
+             (keyup.enter)="login()"
              placeholder="Password">
     </div>
     <div>

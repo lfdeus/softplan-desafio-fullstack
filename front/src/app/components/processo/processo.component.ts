@@ -178,4 +178,24 @@ export class ProcessoComponent implements OnInit {
   formatarData(date: number): Date {
     return new Date(date);
   }
+
+  excluir() {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    let sucesso = false;
+    this.service.excluir(id).pipe(tap(result => {
+        console.log(result);
+        if (result.retorno) {
+          this.snotifyService.success('Processo excluído com sucesso');
+          sucesso = true;
+        } else {
+          console.log(result);
+          this.snotifyService.error(result.erro);
+        }
+      })
+    ).subscribe(() => {
+      if (sucesso) {
+        this.router.navigate(['/processos']);
+      }
+    });
+  }
 }

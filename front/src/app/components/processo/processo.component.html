@@ -1,5 +1,5 @@
 <div *ngIf="!parecerRealizado()">
-  <div class="divSuperior">
+  <div>
     <div class="divTitulo text-30">
       <span *ngIf="!novo()">Alterar processo</span>
       <span *ngIf="novo()">Novo processo</span>
@@ -40,13 +40,13 @@
 
   <div class="divParecer">
     <div>
-      <div class="divSuperior">
+      <div>
         <div class="divTitulo text-30">
           <div class="divTituloParecerDescricao">Processo ({{processo?.descricao}})</div>
-          <div class="divTituloParecerInfo">
-            Data: {{ formatarData(processo?.dataProcesso) | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
-          <div class="divTituloParecerInfo">Usuário: {{processo?.usuarioProcesso?.nome}}</div>
         </div>
+        <div class="divTituloParecerInfo">Usuário: {{processo?.usuarioProcesso?.nome}}</div>
+        <div class="divTituloParecerInfo">
+          Data: {{ formatarData(processo?.dataProcesso) | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
       </div>
       <div class="divDados">
         <div class="divFlex">
@@ -59,13 +59,13 @@
     </div>
 
     <div>
-      <div class="divSuperior">
+      <div>
         <div class="divTitulo text-30">
           <div class="divTituloParecerDescricao">Parecer</div>
-          <div class="divTituloParecerInfo">
-            Data: {{ formatarData(processo?.dataParecer) | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
-          <div class="divTituloParecerInfo">Usuário: {{processo?.usuarioParecer?.nome}}</div>
         </div>
+        <div class="divTituloParecerInfo">Usuário: {{processo?.usuarioParecer?.nome}}</div>
+        <div class="divTituloParecerInfo">
+          Data: {{ formatarData(processo?.dataParecer) | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
       </div>
       <div class="divDados">
         <div class="divFlex">
@@ -79,11 +79,15 @@
   </div>
 </div>
 <div class="divBtnInferiores">
-  <button class="btn-segundario"
-          [routerLink]="['/processos']">Voltar
-  </button>
-  <button class="btn-primario marginLeft10"
+  <button class="btn-primario"
           *ngIf="!parecerRealizado()"
           (click)="salvar()">Salvar
+  </button>
+  <button class="btn-excluir marginLeft10"
+          *ngIf="!parecerRealizado()"
+          (click)="excluir()">Excluir
+  </button>
+  <button class="btn-segundario marginLeft10"
+          [routerLink]="['/processos']">Voltar
   </button>
 </div>

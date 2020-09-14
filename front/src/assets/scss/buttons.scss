@@ -31,3 +31,19 @@
 .btn-segundario:hover {
   background: $brancoHover;
 }
+
+.btn-excluir {
+  padding: 5px 15px;
+  font-size: 16px;
+  background: $vermelho;
+  border: 2px solid $vermelho;
+  border-radius: 4px;
+  color: $branco;
+  cursor: pointer;
+  box-shadow: 0 2px 3px 1px #dadbe1;
+  transition: .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.btn-excluir:hover {
+  background: $vermelhoHover;
+}

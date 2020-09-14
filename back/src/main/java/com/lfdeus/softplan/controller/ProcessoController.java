@@ -7,6 +7,10 @@ import com.lfdeus.softplan.model.Usuario;
 import com.lfdeus.softplan.repository.ProcessoRepository;
 import com.lfdeus.softplan.repository.UsuarioRepository;
 import com.lfdeus.softplan.uteis.Uteis;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +43,13 @@ public class ProcessoController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Consultar processos", response = ProcessoDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna uma lista de processos"),
+            @ApiResponse(code = 404, message = "Processo ou usuário não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity todos(@RequestParam(required = false, name = "id") Long usuario,
                                 @RequestParam(required = false, name = "p") String pendente) {
         try {
@@ -65,12 +76,20 @@ public class ProcessoController {
             }
             return new ResponseEntity<>(listaDTO, HttpStatus.OK);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Consultar um processo por ID", response = ProcessoDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna o processo"),
+            @ApiResponse(code = 404, message = "Processo não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity obter(@PathVariable Long id) {
         try {
             Optional<Processo> processoData = repo.findById(id);
@@ -79,12 +98,19 @@ public class ProcessoController {
             }
             return new ResponseEntity<>("Processo não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Inserir um processo", response = ProcessoDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Sucesso, retorna o processo"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity save(@RequestBody ProcessoDTO dto) {
         try {
             dto.validarDados(false);
@@ -96,12 +122,20 @@ public class ProcessoController {
             processo.setUsuarioProcesso(new Usuario(dto.getUsuarioProcesso()));
             return new ResponseEntity<>(new ProcessoDTO(repo.save(processo)), HttpStatus.CREATED);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Alterar um processo", response = ProcessoDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna o processo alterado"),
+            @ApiResponse(code = 404, message = "Processo não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity update(@PathVariable Long id,
                                  @RequestParam(required = false) String parecer,
                                  @RequestBody ProcessoDTO dto) {
@@ -131,21 +165,39 @@ public class ProcessoController {
             }
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Deletar um processo por ID", response = ProcessoDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso"),
+            @ApiResponse(code = 404, message = "Processo não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity delete(@PathVariable Long id) {
         try {
             Optional<Processo> processoData = repo.findById(id);
             if (processoData.isPresent()) {
-                repo.deleteById(id);
-                return new ResponseEntity<>(HttpStatus.OK);
+                if (processoData.get().getDataParecer() != null) {
+                    throw new Exception("Processo não pode ser excluido, já foi realizado o parecer.");
+                }
+
+                try {
+                    repo.deleteById(id);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    throw new Exception("Processo já foi utilizado, não pode ser excluído.");
+                }
             }
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

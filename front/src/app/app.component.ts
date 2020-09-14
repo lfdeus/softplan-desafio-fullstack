@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {SessaoService} from './service/sessao.service';
 import {Usuario} from './base.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,21 @@ import {Usuario} from './base.model';
 export class AppComponent {
   title = 'Gestão de Processos';
 
-  constructor(private sessao: SessaoService) {
+  constructor(private sessao: SessaoService,
+              private router: Router) {
   }
 
   usuario(): Usuario {
     return this.sessao.loggedUser;
+  }
+
+  class(): string {
+    if (this.router.url.includes('home')) {
+      return 'home';
+    } else if (this.usuario()) {
+      return 'conteudo';
+    } else {
+      return 'conteudo-login';
+    }
   }
 }

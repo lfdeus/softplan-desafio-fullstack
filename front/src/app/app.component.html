@@ -4,7 +4,7 @@
     <app-header *ngIf="usuario()"></app-header>
     <div class="div">
       <app-menu *ngIf="usuario()"></app-menu>
-      <div [ngClass]="{'conteudo' : usuario(), 'conteudo-login' : !usuario()}">
+      <div class="{{class()}}">
         <router-outlet></router-outlet>
       </div>
     </div>

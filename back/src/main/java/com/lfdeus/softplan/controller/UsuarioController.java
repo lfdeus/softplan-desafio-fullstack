@@ -5,6 +5,10 @@ import com.lfdeus.softplan.model.PerfilEnum;
 import com.lfdeus.softplan.model.Usuario;
 import com.lfdeus.softplan.repository.UsuarioRepository;
 import com.lfdeus.softplan.uteis.Uteis;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +37,12 @@ public class UsuarioController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Retorna os usuários cadastrados", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna a lista de usuários"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity todos(@RequestParam(required = false, name = "ativo") String somenteAtivos) {
         try {
             boolean somenteUsuarioAtivo = (somenteAtivos != null && somenteAtivos.equalsIgnoreCase("t"));
@@ -48,12 +58,20 @@ public class UsuarioController {
             }
             return new ResponseEntity<>(listaDTO, HttpStatus.OK);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Consultar usuário por ID", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna o usuário"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity usuario(@PathVariable Long id) {
         try {
             Optional<Usuario> usuarioData = repo.findById(id);
@@ -62,12 +80,19 @@ public class UsuarioController {
             }
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Incluir novo usuário", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Sucesso, retorna o usuário inserido"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity save(@RequestBody UsuarioDTO dto) {
         try {
             dto.validarDados(true);
@@ -92,6 +117,13 @@ public class UsuarioController {
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Alterar usuário", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso, retorna o usuário alterado"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity update(@PathVariable Long id,
                                  @RequestBody UsuarioDTO dto) {
         try {
@@ -117,21 +149,35 @@ public class UsuarioController {
             }
             return new ResponseEntity<>(new UsuarioDTO(repo.save(usuarioNew)), HttpStatus.OK);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @ResponseBody
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Excluir um usuário por ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity delete(@PathVariable Long id) {
         try {
             Optional<Usuario> usuarioData = repo.findById(id);
             if (usuarioData.isPresent()) {
-                repo.deleteById(id);
-                return new ResponseEntity<>(HttpStatus.OK);
+                try {
+                    repo.deleteById(id);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    throw new Exception("Usuário já foi utilizado, não pode ser excluído.");
+                }
             }
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

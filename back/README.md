@@ -1,44 +1,32 @@
-# Softplan - Fullstack - Projeto Back - Gestão de Processos
+# Softplan - Fullstack - Gestão de Processos - Back
 
 Serviço back do sistema de Gestão de Processos. (Desafio Fullstack)
 
-## Requisitos
-
-- [Spring Boot 2.3.3](https://spring.io/projects/spring-boot)
-- [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- [Postgres](https://www.postgresql.org/download/)
-- [Maven 3](https://maven.apache.org)
-- [Spring Data](http://projects.spring.io/spring-data/)
-
+Desenvolvido em Spring Boot 2.3.3.RELEASE
 
 ## Como subir o sistema ?
 
 ### 1. Configurar "pom.xml"
+ 
+ Caso queira alterar alguma configuração. 
 
     <profile>
 	    <id>dev</id>
 		<properties>
-			<DB_URL>jdbc:postgresql://localhost:5432/softplan</DB_URL>
-			<DB_USERNAME>postgres</DB_USERNAME>
-			<DB_PASSWORD>lfdeus</DB_PASSWORD>
-			<DB_CONNECT_TIMEOUT>1000</DB_CONNECT_TIMEOUT>
-			<SERVER_PORT>8087</SERVER_PORT>
-		</properties>
+            <DB_URL>jdbc:h2:file:~/desafioSoftplan</DB_URL>
+        	<DB_USERNAME>sa</DB_USERNAME>
+        	<DB_PASSWORD>softplan</DB_PASSWORD>
+        	<SERVER_PORT>8087</SERVER_PORT>
+        </properties>
 	</profile>
 
-### 2. Executar local
+### 2. URL local
 
-    mvn spring-boot:run
+O sistema estará disponível na url:
 
-Executar o comando:
+    localhost:8087
 
-    mvn clean install
+## Documentação API
 
-
-
-### 3. Agora para rodar o projeto basta executar o comando:
-
-## Author
-
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.
+    localhost:8087/swagger-ui.html
 

@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
         // visible: this.sessao.loggedUser.perfil === Perfil.TRIADOR
         visible: true
       }, {
-        nome: 'Pendente Parecer',
+        nome: 'Parecer Pendente',
         rota: 'pendente',
         icon: 'fa fa-check',
         // visible: this.sessao.loggedUser.perfil === Perfil.FINALIZADOR

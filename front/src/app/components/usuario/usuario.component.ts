@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Usuario} from '../../base.model';
@@ -114,6 +114,26 @@ export class UsuarioComponent implements OnInit {
     ).subscribe(() => {
       if (sucesso) {
         this.router.navigate(['/usuario', id]);
+      }
+    });
+  }
+
+  excluir() {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    let sucesso = false;
+    this.service.excluir(id).pipe(tap(result => {
+        console.log(result);
+        if (result.retorno) {
+          this.snotifyService.success('Usuário excluído com sucesso');
+          sucesso = true;
+        } else {
+          console.log(result);
+          this.snotifyService.error(result.erro);
+        }
+      })
+    ).subscribe(() => {
+      if (sucesso) {
+        this.router.navigate(['/usuarios']);
       }
     });
   }

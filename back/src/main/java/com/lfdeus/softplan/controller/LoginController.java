@@ -5,6 +5,10 @@ import com.lfdeus.softplan.dto.UsuarioLoginDTO;
 import com.lfdeus.softplan.model.Usuario;
 import com.lfdeus.softplan.repository.UsuarioRepository;
 import com.lfdeus.softplan.uteis.Uteis;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +32,13 @@ public class LoginController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Retorna os dados do usuário que soliciou login", response = UsuarioDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Sucesso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado"),
+            @ApiResponse(code = 500, message = "Erro interno, verifique a mensagem de retorno"),
+    }
+    )
     public ResponseEntity login(@RequestBody UsuarioLoginDTO dto) {
         try {
             Optional<Usuario> usuarioData = repo.findByUsernameAndPassword(dto.getUsername().toUpperCase(), Uteis.encryptMD5(dto.getPassword()));
@@ -40,6 +51,7 @@ public class LoginController {
             }
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

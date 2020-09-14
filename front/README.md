@@ -1,27 +1,31 @@
-# Front
+# Softplan - Fullstack - Gestão de Processos - Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Serviço front do sistema de Gestão de Processos. (Desafio Fullstack)
 
-## Development server
+Desenvolvido em Angular CLI: 9.1.12
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Como subir o sistema ?
 
-## Code scaffolding
+### 1. Configurar environments
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    Preencher o arquivo front/src/environments/environment.ts com as seguintes propriedades.
+    
+    export const environment = {
+      production: false,
+      api: 'http://localhost:8087'
+    };
+    
+### 2. Instalando dependências
+       
+    npm install
 
-## Build
+### 3. Pronto! Agora para rodar o projeto basta executar o comando:
+       
+    ng s
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+O sistema estará disponível na url:
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    localhost:4200/login
+    
+    Usuário: admin
+    Senha: admin

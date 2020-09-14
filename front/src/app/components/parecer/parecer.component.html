@@ -38,11 +38,11 @@
   </div>
 </div>
 <div class="divBtnInferiores">
-  <button class="btn-segundario"
-          [routerLink]="['/pendente']">Voltar
-  </button>
-  <button class="btn-primario marginLeft10"
+  <button class="btn-primario"
           *ngIf="!parecerRealizado()"
           (click)="salvar()">Salvar
+  </button>
+  <button class="btn-segundario marginLeft10"
+          [routerLink]="['/pendente']">Voltar
   </button>
 </div>

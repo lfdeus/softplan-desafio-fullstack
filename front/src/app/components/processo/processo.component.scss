@@ -1,17 +1,15 @@
 @import "../../../assets/import.scss";
 
-.divSuperior {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  align-items: center;
-}
-
 .divParecer {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 .divTitulo {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  font-size: 30px;
   color: $baseHover;
 }
 

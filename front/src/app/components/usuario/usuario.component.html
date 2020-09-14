@@ -61,10 +61,13 @@
   </div>
 </div>
 <div class="divBtnInferiores">
-  <button class="btn-segundario"
-          [routerLink]="['/usuarios']">Cancelar
-  </button>
-  <button class="btn-primario marginLeft10"
+  <button class="btn-primario"
           (click)="salvar()">Salvar
+  </button>
+  <button class="btn-excluir marginLeft10"
+          (click)="excluir()">Excluir
+  </button>
+  <button class="btn-segundario marginLeft10"
+          [routerLink]="['/usuarios']">Voltar
   </button>
 </div>

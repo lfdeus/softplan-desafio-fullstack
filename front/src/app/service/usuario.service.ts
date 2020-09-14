@@ -50,4 +50,13 @@ export class UsuarioService {
       }));
     }
   }
+
+  excluir(id: number): Observable<{ erro?: string; retorno?: any }> {
+      const url = environment.api + '/usuario/' + id;
+      return this.http.delete(url).pipe(map(() => {
+        return {retorno: true};
+      }), catchError(error => {
+        return of({erro: error.error});
+      }));
+  }
 }
