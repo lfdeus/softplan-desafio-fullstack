@@ -98,6 +98,7 @@ export class ProcessoComponent implements OnInit {
     this.processo = new Processo();
     this.processo.id = 0;
     this.formGroup.get('descricao').setValue('');
+    this.formGroup.get('usuariosParecer').setValue([]);
     this.htmlProcesso = '';
   }
 
@@ -145,6 +146,7 @@ export class ProcessoComponent implements OnInit {
       return;
     }
 
+    this.processo.usuariosParecer = [];
     for (const usuario of this.formGroup.get('usuariosParecer').value) {
       this.processo.usuariosParecer.push(usuario);
     }

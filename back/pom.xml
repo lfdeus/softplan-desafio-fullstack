@@ -22,10 +22,9 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<DB_URL>jdbc:postgresql://localhost:5432/softplan</DB_URL>
-				<DB_USERNAME>postgres</DB_USERNAME>
-				<DB_PASSWORD>pactodb</DB_PASSWORD>
-				<DB_CONNECT_TIMEOUT>1000</DB_CONNECT_TIMEOUT>
+				<DB_URL>jdbc:h2:file:~/desafioSoftplan</DB_URL>
+				<DB_USERNAME>sa</DB_USERNAME>
+				<DB_PASSWORD>softplan</DB_PASSWORD>
 				<SERVER_PORT>8087</SERVER_PORT>
 			</properties>
 		</profile>
@@ -50,9 +49,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+			<version>1.4.199</version>
 		</dependency>
 
 		<dependency>
