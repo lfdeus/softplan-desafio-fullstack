@@ -34,6 +34,5 @@ Desafio Softplan - Fullstack
 
 - Luiz Felipe Almeida de Deus
 - lf0889@gmail.com
-- (62) 98323-9757
 
 ![Thank you](https://media.giphy.com/media/KJ1f5iTl4Oo7u/giphy-downsized-large.gif)
