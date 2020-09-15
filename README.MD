@@ -28,6 +28,7 @@ Desafio Softplan - Fullstack
 
 - Foi utilizado banco H2 devido a facilidade para configuração de ambiente.
 - Será criado um usuário "admin" com senha "admin" ao executar a aplicação.
+- Dentro de cada projeto ("Front", "Back") tem um "README".
 
 ### Author
 
