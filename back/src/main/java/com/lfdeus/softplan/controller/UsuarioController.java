@@ -167,6 +167,11 @@ public class UsuarioController {
         try {
             Optional<Usuario> usuarioData = repo.findById(id);
             if (usuarioData.isPresent()) {
+
+                if (usuarioData.get().getUsername().equalsIgnoreCase("admin")) {
+                    throw new Exception("Usuário \"ADMIN\" não pode excluído.");
+                }
+
                 try {
                     repo.deleteById(id);
                     return new ResponseEntity<>(HttpStatus.OK);

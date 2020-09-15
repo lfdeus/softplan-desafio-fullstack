@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Processo, Usuario} from '../../base.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AngularEditorConfig} from '@kolkov/angular-editor';
@@ -197,5 +197,9 @@ export class ProcessoComponent implements OnInit {
         this.router.navigate(['/processos']);
       }
     });
+  }
+
+  comparer(o1: Usuario, o2: Usuario): boolean {
+    return o1 && o2 ? o1.id === o2.id : o2 === o2;
   }
 }
